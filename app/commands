@@ -1,0 +1,15 @@
+docker build -t cli-game . 
+docker run -it cli-game 
+
+docker run -it --name cg-container cli-game
+docker exec -it cg-container sh
+
+sqlite3 game.db
+SELECT * FROM guesses;
+
+docker login
+docker tag cli-game your-user-name/cli-game:latest
+docker push your-user-name/cli-game:latest
+
+docker build -t cli-game .
+docker run --rm cli-game pytest test_game.py  
